@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg--> 
+<head>
+	<title>ML API</title>
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link href="{{ url_for('static',filename='styles/style.css') }}" rel='stylesheet'>
+</head>
+
+<body>
+ <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+ <div class="login">
+	<h2>Salary Predictor</h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    <div class="field">	
+		<div class="text-field">
+			<p>Experience: </p>
+			<p>Test score: </p>
+			<p>Interview score: </p>
+		</div> 
+		<div class="input-field">
+			<input type="text" name="experience" placeholder="in years" required="required" />
+			<input type="text" name="test_score" placeholder="out of 10" required="required" />
+			<input type="text" name="interview_score" placeholder="out of 10" required="required" />
+		</div>
+	</div>
+    <div class="button-adjust">
+		<button type="submit" class="btn btn-success predict-button">Predict</button>
+	</div>	
+    </form>
+   <br>
+   <br>
+   <div class="prediction-text">
+       <div class="text-text">
+			<p>Predicted Salary:</p>
+       </div>
+       <div class="text-val">
+			<p>{{ prediction_text }}</p>
+       </div>				   
+   </div>
+ </div>
+</body>
+</html>
